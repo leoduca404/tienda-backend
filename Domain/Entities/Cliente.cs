@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Entities
+namespace Domain.Entities
 {
-    public Domain Cliente
+    public class Cliente
     {
         public int ClienteId { get; set; }
         public string DNI { get; set; }

@@ -15,5 +15,7 @@ namespace Domain.Entities
         public string Codigo { get; set; }
         public double Precio { get; set; }
         public string Image { get; set; }
+
+        public IList<CarritoProducto> CarritoProductos { get; set; }
     }
 }

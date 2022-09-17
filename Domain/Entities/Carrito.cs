@@ -11,5 +11,7 @@ namespace Domain.Entities
         public int CarritoId { get; set; }
         public int ClienteId { get; set; }
         public bool Estado { get; set; }
+
+        public IList<CarritoProducto> CarritoProductos { get; set; }
     }
 }
