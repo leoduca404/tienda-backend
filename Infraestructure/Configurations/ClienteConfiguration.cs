@@ -24,6 +24,17 @@ namespace Infraestructure.Configurations
                    .HasMaxLength(10);
             builder.Property(p => p.Telefono)
                    .HasMaxLength(13);
+
+            builder.HasData(
+               new Cliente
+               {
+                   ClienteId = 1,
+                   DNI = "32845146",
+                   Nombre = "Leonardo",
+                   Apellido = "Duca",
+                   Direccion = "Lasrrea 2661",
+                   Telefono = "111619987541"
+               });
         }
 
     }

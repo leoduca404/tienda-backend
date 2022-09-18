@@ -21,6 +21,8 @@ namespace Infraestructure.Configurations
                    .WithOne(ad => ad.Orden)
                    .HasForeignKey<Carrito>(ad => ad.CarritoId);
 
+            //TODO VER RELACION uno a muchos con carritoProducto
+
         }
 
     }
