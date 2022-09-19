@@ -23,7 +23,7 @@ namespace Tienda.APP.Helpers
         {
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.Write("\n\n - Materia: Proyecto Software.");
-            Console.Write("\n - Profesora: Lucas.");
+            Console.Write("\n - Profesora: Lucas Olivera.");
             Console.ResetColor();
         }
 

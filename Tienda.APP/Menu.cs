@@ -1,16 +1,25 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Tienda.APP.Controllers;
 using Tienda.APP.Helpers;
 
 namespace Tienda.APP
 {
     public class Menu
     {
+        private readonly ClienteController _clienteController;
+        public Menu(ClienteController clienteController)
+        {
+            _clienteController = clienteController;
+        }
+
         static bool exit = false;
-        public static void InicializarMenu()
+        public async Task InicializarMenu()
         {
             while (!exit)
             {
@@ -26,7 +35,7 @@ namespace Tienda.APP
                 {
                     case '1':
                         {
-                            
+                            await RegistrarCliente();
                             break;
                         }
                     case '2':
@@ -52,6 +61,63 @@ namespace Tienda.APP
                         }
                 }
             }
+        }
+
+        public async Task RegistrarCliente()
+        {
+            LogicaPantalla.imprimirEncabezado(ConsoleColor.Blue, "Registrar Cliente");
+            string nombre, apellido, dni, direccion, telefono;
+            nombre = obtenerValorSoloLetras("nombre");
+            apellido = obtenerValorSoloLetras("apellido");
+            dni = obtenerValorSoloNumeros("DNI");
+            direccion= obtenerValor("direccion");
+            telefono = obtenerValorSoloNumeros("telefono");
+
+            await _clienteController.AddCliente(nombre, apellido, dni, direccion, telefono);
+
+            Console.Write("\n--------------------------------------------------------------------------------\n\n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(string.Format("Operación Exitosa.\n"));
+            Console.WriteLine(string.Format("\t- El Cliente '{0}' fue dado de alta correctamente", nombre));
+            LogicaPantalla.imprimirSalida();
+        }
+        public static string obtenerValorSoloLetras(string atributo)
+        {
+            Console.Write(string.Format("Ingrese {0}: ", atributo));
+            string valor = Console.ReadLine();
+
+            while (!valor.All(Char.IsLetter) || valor.Length == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(string.Format("Ingrese {0} valido: ", atributo));
+                valor = Console.ReadLine();
+                Console.ResetColor();
+            }
+
+            return valor;
+        }
+        public static string obtenerValorSoloNumeros(string atributo)
+        {
+            Console.Write(string.Format("Ingrese {0}: ", atributo));
+            string valor = Console.ReadLine();
+
+            while (!valor.All(Char.IsNumber) || valor.Length == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(string.Format("Ingrese {0} valido: ", atributo));
+                valor = Console.ReadLine();
+                Console.ResetColor();
+            }
+
+            return valor;
+        }
+
+        public static string obtenerValor(string atributo)
+        {
+            Console.Write(string.Format("Ingrese {0}: ", atributo));
+            string valor = Console.ReadLine();      
+
+            return valor;
         }
     }
 }

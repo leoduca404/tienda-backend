@@ -2,17 +2,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Application.Interfaces;
 using Application.UseCase;
 using Infraestructure.Querys;
 using Infraestructure.Command;
-using Domain.Entities;
-using System.Text.RegularExpressions;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Tienda.APP.Controllers;
-using Tienda.APP.Helpers;
 using Tienda.APP;
 
 //1. Create a service collection for DI
@@ -26,10 +20,18 @@ IConfiguration configuration = new ConfigurationBuilder()
 
 //3. Add the configuration to the service collection.
 services.AddSingleton<IConfiguration>(configuration);
+
 services.AddSingleton<IProductoServices, ProductoServices>();
 services.AddSingleton<IProductoQuery, ProductoQuery>();
 services.AddSingleton<IProductoCommand, ProductoCommand>();
 services.AddSingleton<ProductoController>();
+
+services.AddSingleton<IClienteServices, ClienteServices>();
+services.AddSingleton<IClienteQuery, ClienteQuery>();
+services.AddSingleton<IClienteCommand, ClienteCommand>();
+services.AddSingleton<ClienteController>();
+
+services.AddSingleton<Menu>();
 
 services.AddDbContext<TiendaContext>(options =>
 {
@@ -39,13 +41,5 @@ services.AddDbContext<TiendaContext>(options =>
 
 var serviceProvider = services.BuildServiceProvider();
 
-//var testIntance = serviceProvider.GetService<IProductoServices>();
-
-var testIntance = serviceProvider.GetService<ProductoController>();
-//await testIntance.AddProducto("Sopa8", "SOPA de verdura", "KNOR", "cod21312", 20.50, "url");
-
-Menu.InicializarMenu();
-
-
-
-
+var menu = serviceProvider.GetService<Menu>();
+if (menu != null) { await menu.InicializarMenu(); }
