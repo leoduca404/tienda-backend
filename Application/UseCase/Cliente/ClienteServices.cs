@@ -29,14 +29,14 @@ namespace Application.UseCase
             return newCliente;
         }
 
-        public Task<List<Cliente>> GetAll()
+        public List<Cliente> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Cliente> GetById(int id)
+        public Cliente GetById(int clientId)
         {
-            throw new NotImplementedException();
+           return _query.GetById(clientId);            
         }
     }
 }

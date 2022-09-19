@@ -10,7 +10,7 @@ namespace Application.Interfaces
     public interface IClienteServices
     {
         Task<Cliente> AddCliente(string nombre, string apellido, string dni, string direccion, string telefono);
-        Task<List<Cliente>> GetAll();
-        Task<Cliente> GetById(int id);
+        List<Cliente> GetAll();
+        Cliente GetById(int id);
     }
 }

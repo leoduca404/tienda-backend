@@ -35,7 +35,7 @@ services.AddSingleton<Menu>();
 
 services.AddDbContext<TiendaContext>(options =>
 {
-    var connectionString = @"Server=.\SQLEXPRESS;Database=TiendaLeo;Integrated Security=SSPI;";    
+    var connectionString = configuration.GetSection("ConnectionString").Value;
     options.UseSqlServer(connectionString);
 }, ServiceLifetime.Singleton);
 

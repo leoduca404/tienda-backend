@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces;
 using Domain.Entities;
 using Infraestructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,9 @@ namespace Infraestructure.Querys
             _context = context;
         }
 
-        public Cliente GetClienteById(int ClienteId)
+        public Cliente GetById(int clienteId)
         {
-            throw new NotImplementedException();
+            return _context.Clientes.Include(c=> c.Carritos).FirstOrDefault(s => s.ClienteId == clienteId);
         }
 
         public List<Cliente> GetClientes()
