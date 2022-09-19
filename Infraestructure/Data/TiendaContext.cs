@@ -18,14 +18,19 @@ namespace Infraestructure.Data
         public DbSet<Orden> Ordenes { get; set; }
         public DbSet<CarritoProducto> CarritoProductos { get; set; }
 
-        //public TiendaContext(DbContextOptions<TiendaContext> options) : base(options)
-        //{
+        public TiendaContext() : base()
+        {
 
-        //}
+        }
+
+        public TiendaContext(DbContextOptions<TiendaContext> options) : base(options)
+        {
+
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Tienda;Integrated Security=SSPI;");
+            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=TiendaLeo;Integrated Security=SSPI;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

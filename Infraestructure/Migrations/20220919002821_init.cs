@@ -108,6 +108,28 @@ namespace Infraestructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Cliente",
+                columns: new[] { "ClienteId", "Apellido", "DNI", "Direccion", "Nombre", "Telefono" },
+                values: new object[] { 1, "Duca", "32845146", "Lasrrea 2661", "Leonardo", "111619987541" });
+
+            migrationBuilder.InsertData(
+                table: "Producto",
+                columns: new[] { "ProductoId", "Codigo", "Descripcion", "Image", "Marca", "Nombre", "Precio" },
+                values: new object[,]
+                {
+                    { 1, "cod001", "Yerba sin palos", "", "Amanda", "Yerba Mate", 150m },
+                    { 2, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
+                    { 3, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
+                    { 4, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
+                    { 5, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
+                    { 6, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
+                    { 7, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
+                    { 8, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
+                    { 9, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
+                    { 10, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Carrito_ClienteId",
                 table: "Carrito",

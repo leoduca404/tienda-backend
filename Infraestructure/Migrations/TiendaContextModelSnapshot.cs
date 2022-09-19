@@ -93,6 +93,17 @@ namespace Infraestructure.Migrations
                     b.HasKey("ClienteId");
 
                     b.ToTable("Cliente", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ClienteId = 1,
+                            Apellido = "Duca",
+                            DNI = "32845146",
+                            Direccion = "Lasrrea 2661",
+                            Nombre = "Leonardo",
+                            Telefono = "111619987541"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Orden", b =>
@@ -151,6 +162,108 @@ namespace Infraestructure.Migrations
                     b.HasKey("ProductoId");
 
                     b.ToTable("Producto", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ProductoId = 1,
+                            Codigo = "cod001",
+                            Descripcion = "Yerba sin palos",
+                            Image = "",
+                            Marca = "Amanda",
+                            Nombre = "Yerba Mate",
+                            Precio = 150m
+                        },
+                        new
+                        {
+                            ProductoId = 2,
+                            Codigo = "cod002",
+                            Descripcion = "Cafe en granos",
+                            Image = "",
+                            Marca = "La virginia",
+                            Nombre = "Cafe Molido",
+                            Precio = 100m
+                        },
+                        new
+                        {
+                            ProductoId = 3,
+                            Codigo = "cod002",
+                            Descripcion = "Cafe en granos",
+                            Image = "",
+                            Marca = "La virginia",
+                            Nombre = "Cafe Molido",
+                            Precio = 100m
+                        },
+                        new
+                        {
+                            ProductoId = 4,
+                            Codigo = "cod002",
+                            Descripcion = "Cafe en granos",
+                            Image = "",
+                            Marca = "La virginia",
+                            Nombre = "Cafe Molido",
+                            Precio = 100m
+                        },
+                        new
+                        {
+                            ProductoId = 5,
+                            Codigo = "cod002",
+                            Descripcion = "Cafe en granos",
+                            Image = "",
+                            Marca = "La virginia",
+                            Nombre = "Cafe Molido",
+                            Precio = 100m
+                        },
+                        new
+                        {
+                            ProductoId = 6,
+                            Codigo = "cod002",
+                            Descripcion = "Cafe en granos",
+                            Image = "",
+                            Marca = "La virginia",
+                            Nombre = "Cafe Molido",
+                            Precio = 100m
+                        },
+                        new
+                        {
+                            ProductoId = 7,
+                            Codigo = "cod002",
+                            Descripcion = "Cafe en granos",
+                            Image = "",
+                            Marca = "La virginia",
+                            Nombre = "Cafe Molido",
+                            Precio = 100m
+                        },
+                        new
+                        {
+                            ProductoId = 8,
+                            Codigo = "cod002",
+                            Descripcion = "Cafe en granos",
+                            Image = "",
+                            Marca = "La virginia",
+                            Nombre = "Cafe Molido",
+                            Precio = 100m
+                        },
+                        new
+                        {
+                            ProductoId = 9,
+                            Codigo = "cod002",
+                            Descripcion = "Cafe en granos",
+                            Image = "",
+                            Marca = "La virginia",
+                            Nombre = "Cafe Molido",
+                            Precio = 100m
+                        },
+                        new
+                        {
+                            ProductoId = 10,
+                            Codigo = "cod002",
+                            Descripcion = "Cafe en granos",
+                            Image = "",
+                            Marca = "La virginia",
+                            Nombre = "Cafe Molido",
+                            Precio = 100m
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Carrito", b =>

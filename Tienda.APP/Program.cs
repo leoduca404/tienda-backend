@@ -12,6 +12,8 @@ using System.Text.RegularExpressions;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Tienda.APP.Controllers;
+using Tienda.APP.Helpers;
+using Tienda.APP;
 
 //1. Create a service collection for DI
 ServiceCollection services = new ServiceCollection();
@@ -24,39 +26,26 @@ IConfiguration configuration = new ConfigurationBuilder()
 
 //3. Add the configuration to the service collection.
 services.AddSingleton<IConfiguration>(configuration);
-services.AddScoped<IProductoServices, ProductoServices>();
-services.AddScoped<IProductoQuery, ProductoQuery>();
-services.AddScoped<IProductoCommand, ProductoCommand>();
+services.AddSingleton<IProductoServices, ProductoServices>();
+services.AddSingleton<IProductoQuery, ProductoQuery>();
+services.AddSingleton<IProductoCommand, ProductoCommand>();
+services.AddSingleton<ProductoController>();
 
-//services.AddSingleton<Test>();
-//services.AddSingleton<TiendaContext>();
+services.AddDbContext<TiendaContext>(options =>
+{
+    var connectionString = @"Server=.\SQLEXPRESS;Database=TiendaLeo;Integrated Security=SSPI;";    
+    options.UseSqlServer(connectionString);
+}, ServiceLifetime.Singleton);
 
-
-//services.AddDbContext<TiendaContext>(options =>
-//{
-//    var connectionString = @"Server=DESKTOP-I5LKSLD\\\\SQLEXPRESS; Database=Tienda; User Id=admin; Password = admin;";
-//    configuration.GetSection("ConnectionString").Value
-//    options.UseSqlServer(connectionString);
-//}, ServiceLifetime.Singleton);
 var serviceProvider = services.BuildServiceProvider();
 
 //var testIntance = serviceProvider.GetService<IProductoServices>();
 
+var testIntance = serviceProvider.GetService<ProductoController>();
+//await testIntance.AddProducto("Sopa8", "SOPA de verdura", "KNOR", "cod21312", 20.50, "url");
 
-//var testIntance = serviceProvider.GetService<Test>();
-//testIntance.TestMethord();
-
-using (TiendaContext context = new TiendaContext())
-{
-    ProductoCommand productoCommand = new ProductoCommand(context);
-    ProductoQuery productoQuery = new ProductoQuery(context);
-    ProductoServices productoService = new ProductoServices(productoCommand, productoQuery);
-    ProductoController productocontroller= new ProductoController(productoService);
-
-    await productocontroller.AddProducto("Sopa3", "SOPA de verdura", "KNOR", "cod21312", 20.50, "url");
-}
+Menu.InicializarMenu();
 
 
 
 
-  
