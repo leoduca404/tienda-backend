@@ -15,9 +15,12 @@ namespace Tienda.APP
     public class Menu
     {
         private readonly ClienteController _clienteController;
-        public Menu(ClienteController clienteController)
+        private readonly CarritoController _carritoController;
+
+        public Menu(ClienteController clienteController, CarritoController carritoController)
         {
             _clienteController = clienteController;
+            _carritoController = carritoController;
         }
 
         static bool exit = false;
@@ -106,6 +109,10 @@ namespace Tienda.APP
             }
 
             //Creo el carrito para el cliente.
+            Carrito carrito;
+            carrito = await _carritoController.Add(cliente);
+
+
             //Registro ventas
 
             Console.Write("\n--------------------------------------------------------------------------------\n\n");
@@ -114,8 +121,6 @@ namespace Tienda.APP
             Console.WriteLine(string.Format("\t- El Cliente '{0}' fue dado de alta correctamente", cliente.Nombre));
             LogicaPantalla.imprimirSalida();
         }
-
-
 
         public static string obtenerValorSoloLetras(string atributo)
         {

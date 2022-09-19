@@ -31,6 +31,11 @@ services.AddSingleton<IClienteQuery, ClienteQuery>();
 services.AddSingleton<IClienteCommand, ClienteCommand>();
 services.AddSingleton<ClienteController>();
 
+services.AddSingleton<ICarritoServices, CarritoServices>();
+services.AddSingleton<ICarritoQuery, CarritoQuery>();
+services.AddSingleton<ICarritoCommand, CarritoCommand>();
+services.AddSingleton<CarritoController>();
+
 services.AddSingleton<Menu>();
 
 services.AddDbContext<TiendaContext>(options =>
