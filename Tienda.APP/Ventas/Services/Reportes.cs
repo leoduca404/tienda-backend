@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tienda.APP.Helpers;
+using Domain.Entities;
+using Application.Interfaces.Ventas;
 
 namespace Tienda.APP.Ventas.Services
 {
@@ -14,11 +16,11 @@ namespace Tienda.APP.Ventas.Services
     {
         //private readonly IOrdenServices _servicesOrden;
         private readonly LogicaPantalla _logicaPantalla;
-        private readonly TiendaContext _context;
+        private readonly IReporteServices _reportesServices; 
 
-        public Reportes(LogicaPantalla logicaPantalla, TiendaContext context)
+        public Reportes(LogicaPantalla logicaPantalla, IReporteServices reportesServices)
         {
-            _context = context;
+            _reportesServices = reportesServices;
             _logicaPantalla = logicaPantalla;
         }
 
@@ -26,22 +28,55 @@ namespace Tienda.APP.Ventas.Services
         {
             _logicaPantalla.imprimirEncabezado(ConsoleColor.Blue, "Reportes Ventas Diarias");
 
-            DateTime now = DateTime.Now;//Parse("2022-09-19 17:52:26.5526611");
-            DateTime fechaInicioDia = new DateTime(now.Year, now.Month, now.Day, 00, 00, 00);;
-            DateTime fechaFinDia = new DateTime(now.Year, now.Month, now.Day, 23, 59, 59); ;
-      
+            List<Orden> ordenes = await _reportesServices.GetReporteDiario();
+            _logicaPantalla.imprimirColumnaHead("Cliente", "Producto", "Marca", "Precio", "Fecha");
 
-            var ordenes =  await _context.Ordenes
-                .Include(o => o.Carrito)
-                .ThenInclude(c => c.CarritoProductos)
-                .ThenInclude(cp => cp.Producto)
-                .Include(o => o.Carrito)
-                .ThenInclude(c => c.Cliente)
-                .Where(o => (o.Fecha <= fechaFinDia && o.Fecha >= fechaInicioDia))
-                .ToListAsync(); 
+            foreach (Orden orden in ordenes)
+            {                
+                foreach (CarritoProducto carritoProducto in orden.Carrito.CarritoProductos)
+                {
+                    _logicaPantalla.imprimirColumna(orden.Carrito.Cliente.DNI,
+                        carritoProducto.Producto.Nombre,
+                        carritoProducto.Producto.Marca,
+                        carritoProducto.Producto.Precio.ToString(),
+                        orden.Fecha.ToString());        
+                }
+            }
+            
+            _logicaPantalla.imprimirSalida();
+        }
 
-            Console.ReadLine();
-        }    
+        public async Task BusquedaVentasDiarias()
+        {
+            _logicaPantalla.imprimirEncabezado(ConsoleColor.Blue, "Busqueda por producto - Ventas Diarias");
+
+            string producto = _logicaPantalla.obtenerValorSoloLetras("nombre del producto");
+            Console.WriteLine();
+
+            List <Orden> ordenes = await _reportesServices.GetReporteDiario(producto);
+          
+            _logicaPantalla.imprimirColumnaHead("Cliente", "Producto", "Marca", "Precio", "Fecha");
+            int cont = 0;
+
+            foreach (Orden orden in ordenes)
+            {
+                foreach (CarritoProducto carritoProducto in orden.Carrito.CarritoProductos)
+                {
+                    _logicaPantalla.imprimirColumna(orden.Carrito.Cliente.DNI,
+                        carritoProducto.Producto.Nombre,
+                        carritoProducto.Producto.Marca,
+                        carritoProducto.Producto.Precio.ToString(),
+                        orden.Fecha.ToString());
+                    cont++;
+                }
+            }
+           
+            if(cont == 0)
+                Console.WriteLine("No hay elementos...");
+           
+
+            _logicaPantalla.imprimirSalida();
+        }
 
     }    
 }

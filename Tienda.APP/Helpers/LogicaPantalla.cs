@@ -48,6 +48,48 @@ namespace Tienda.APP.Helpers
             Thread.Sleep(2000);
         }
 
+        private int tableWidth = 100;
+        public void imprimirColumna( params string[] columns)
+        {
+            int width = (tableWidth - columns.Length) / columns.Length;
+            string row = "|";
+            foreach (string column in columns)
+            {
+                row += AlignCenter(column, width) + "|";
+            }
+
+            Console.WriteLine(row);
+        }
+
+        public void imprimirColumnaHead(params string[] columns)
+        {
+            int width = (tableWidth - columns.Length) / columns.Length;
+            string row = "|";
+            foreach (string column in columns)
+            {
+                row += AlignCenter(column, width) + "|";
+            }
+
+            Console.WriteLine(row);
+            Console.Write("------------------------------------------------------------------------------------------------------\n");
+
+        }
+
+        private string AlignCenter(string text, int width)
+        {
+            text = text.Length > width ? text.Substring(0, width - 3) + "..." : text;
+
+            if (string.IsNullOrEmpty(text))
+            {
+                return new string(' ', width);
+            }
+
+            else
+            {
+                return text.PadRight(width - (width - text.Length) / 2).PadLeft(width);
+            }
+        }
+
         public void imprimirSalida()
         {
             Console.Write("\n\n\n-------------------------------------------------------------------------------------------\n");

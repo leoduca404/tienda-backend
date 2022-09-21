@@ -93,7 +93,7 @@ namespace Tienda.APP
             {
                 Console.ResetColor();
                 _logicaPantalla.imprimirEncabezado(ConsoleColor.Blue, "Operatoria Administrador");
-                _logicaPantalla.imprimirMenu(new List<string>() { "Registrar ventas del día", "Reportes de ventas del día", "Busquedas por producto", "Salir" });
+                _logicaPantalla.imprimirMenu(new List<string>() { "Registrar ventas del día", "Reportes de ventas del día", "Busquedas por producto", "Volver" });
                 _logicaPantalla.imprimirPie();
 
                 ConsoleKeyInfo key = Console.ReadKey();
@@ -113,7 +113,7 @@ namespace Tienda.APP
                         }
                     case '3':
                         {
-                            //BusquedasPorProducto();
+                            await _reportes.BusquedaVentasDiarias();
                             break;
                         }
                     case '4':

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tienda.APP.Controllers
+namespace Tienda.APP.Services
 {
     public class ServicesProducto
     {
