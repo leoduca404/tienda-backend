@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    public interface IClienteServices
+    public interface IOrdenServices
     {
         Task<Cliente> AddCliente(string nombre, string apellido, string dni, string direccion, string telefono);
         List<Cliente> GetAll();

@@ -12,6 +12,6 @@ namespace Application.Interfaces
         Task<Producto> AddProducto(string nombre, string descripcion, string marca, string codigo, double precio,string image);
         Task RemoveProducto(int productoId);
         Task<List<Producto>> GetAll();
-        Task<Producto> GetById(int id);
+        Producto GetById(int id);
     }
 }

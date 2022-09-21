@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces;
 using Domain.Entities;
 using Infraestructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,10 @@ namespace Infraestructure.Querys
             _context = context;
         }
 
-        public Producto GetProductoById(int productoId)
+        public Producto GetById(int productoId)
         {
-            throw new NotImplementedException();
+            return _context.Productos.FirstOrDefault(s => s.ProductoId == productoId);
+
         }
 
         public List<Producto> GetProductos()

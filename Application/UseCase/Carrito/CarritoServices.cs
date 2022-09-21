@@ -15,30 +15,29 @@ namespace Application.UseCase
             _query = query;
         }   
 
-        public async Task<Carrito> Add(Cliente cliente)
+        public async Task Add(Carrito carrito)
         {
-            Guid id = Guid.NewGuid();
+            //Guid id = Guid.NewGuid();
 
-            var order = new Orden
-            {
-                OrdenId = Guid.NewGuid(),
-                CarritoId = id,
-                Fecha = DateTime.Now,
-                Total = 0
-            };
+            //var order = new Orden
+            //{
+            //    OrdenId = Guid.NewGuid(),
+            //    CarritoId = id,
+            //    Fecha = DateTime.Now,
+            //    Total = 0
+            //};
 
-            var newCarrito = new Carrito
-            {
-                CarritoId = id,   
-                Cliente = cliente,      
-                ClienteId= cliente.ClienteId,
-                Estado = true, 
-                Orden = order,
-            };          
-            
+            //var newCarrito = new Carrito
+            //{
+            //    CarritoId = id,   
+            //    Cliente = cliente,      
+            //    ClienteId= cliente.ClienteId,
+            //    Estado = true, 
+            //    Orden = order,
+            //};                      
 
-            await _command.Add(newCarrito);
-            return newCarrito;
+            await _command.Add(carrito);
+        
         }
 
         public List<Carrito> GetAll()

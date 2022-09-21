@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Tienda.APP.Controllers
 {
-    public class CarritoController
+    public class ServicesCarrito
     {
         private readonly ICarritoServices _services;
-        public CarritoController(ICarritoServices services)
+        public ServicesCarrito(ICarritoServices services)
         {
             _services = services;
         }
 
-        public async Task<Carrito> Add(Cliente cliente)
+        public async Task Add(Carrito carrito)
         {                       
-          return await _services.Add(cliente);
+          await _services.Add(carrito);
         }
     }
 }

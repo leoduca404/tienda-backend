@@ -9,6 +9,6 @@ namespace Application.Interfaces
 {
     public interface ICarritoServices
     {
-        Task<Carrito> Add(Cliente cliente);   
+        Task Add(Carrito carrito);   
     }
 }

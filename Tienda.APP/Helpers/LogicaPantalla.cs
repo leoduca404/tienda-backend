@@ -8,7 +8,7 @@ namespace Tienda.APP.Helpers
 {
     public class LogicaPantalla
     {
-        public static void imprimirEncabezado(ConsoleColor color, string titulo)
+        public void imprimirEncabezado(ConsoleColor color, string titulo)
         {
             Console.Clear();
             Console.Write("\n-----------------------------------------------------------------------------------------\n\n");
@@ -19,7 +19,7 @@ namespace Tienda.APP.Helpers
             Console.Write("\n-----------------------------------------------------------------------------------------\n\n\n");
         }
 
-        public static void imprimirPie()
+        public void imprimirPie()
         {
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.Write("\n\n - Materia: Proyecto Software.");
@@ -27,7 +27,7 @@ namespace Tienda.APP.Helpers
             Console.ResetColor();
         }
 
-        public static void imprimirMenu(List<string> lOpciones)
+        public void imprimirMenu(List<string> lOpciones)
         {
             int cont = 0;
             foreach (string opcion in lOpciones)
@@ -39,7 +39,7 @@ namespace Tienda.APP.Helpers
 
         }
 
-        public static void imprimirDespedida(string mensaje)
+        public void imprimirDespedida(string mensaje)
         {
             Console.Clear();
             Console.Write("\n-----------------------------------------------------------------------------------------\n\n");
@@ -48,14 +48,14 @@ namespace Tienda.APP.Helpers
             Thread.Sleep(2000);
         }
 
-        public static void imprimirSalida()
+        public void imprimirSalida()
         {
             Console.Write("\n\n\n-------------------------------------------------------------------------------------------\n");
             Console.Write("\r\n\r\nPresione enter para finalizar...\r\n");
             Console.ReadKey();
         }
 
-        public static void imprimirResultado(string mensaje, bool resultado)
+        public void imprimirResultado(string mensaje, bool resultado)
         {
             Console.Write(mensaje + " ---> ");
 
@@ -71,6 +71,43 @@ namespace Tienda.APP.Helpers
             }
 
             Console.ResetColor();
+        }
+        public string obtenerValorSoloLetras(string atributo)
+        {
+            Console.Write(string.Format("Ingrese {0}: ", atributo));
+            string valor = Console.ReadLine();
+
+            while (!valor.All(Char.IsLetter) || valor.Length == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(string.Format("Ingrese {0} valido: ", atributo));
+                valor = Console.ReadLine();
+                Console.ResetColor();
+            }
+
+            return valor;
+        }
+        public string obtenerValorSoloNumeros(string atributo)
+        {
+            Console.Write(string.Format("Ingrese {0}: ", atributo));
+            string valor = Console.ReadLine();
+
+            while (!valor.All(Char.IsNumber) || valor.Length == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(string.Format("Ingrese {0} valido: ", atributo));
+                valor = Console.ReadLine();
+                Console.ResetColor();
+            }
+
+            return valor;
+        }
+        public string obtenerValor(string atributo)
+        {
+            Console.Write(string.Format("Ingrese {0}: ", atributo));
+            string valor = Console.ReadLine();
+
+            return valor;
         }
     }
 }

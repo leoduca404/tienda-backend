@@ -40,9 +40,9 @@ namespace Application.UseCase
             throw new NotImplementedException();
         }
 
-        public Task<Producto> GetById(int id)
+        public Producto GetById(int id)
         {
-            throw new NotImplementedException();
+            return _query.GetById(id);
         }
     }
 }

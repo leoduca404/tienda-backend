@@ -8,6 +8,9 @@ using Infraestructure.Querys;
 using Infraestructure.Command;
 using Tienda.APP.Controllers;
 using Tienda.APP;
+using Tienda.APP.Services;
+using Tienda.APP.Helpers;
+using Tienda.APP.Ventas.Services;
 
 //1. Create a service collection for DI
 ServiceCollection services = new ServiceCollection();
@@ -21,22 +24,24 @@ IConfiguration configuration = new ConfigurationBuilder()
 //3. Add the configuration to the service collection.
 services.AddSingleton<IConfiguration>(configuration);
 
-services.AddSingleton<IProductoServices, ProductoServices>();
+services.AddSingleton<IProductoServices,ProductoServices>();
 services.AddSingleton<IProductoQuery, ProductoQuery>();
 services.AddSingleton<IProductoCommand, ProductoCommand>();
-services.AddSingleton<ProductoController>();
+services.AddSingleton<ServicesProducto>();
 
-services.AddSingleton<IClienteServices, ClienteServices>();
-services.AddSingleton<IClienteQuery, ClienteQuery>();
-services.AddSingleton<IClienteCommand, ClienteCommand>();
-services.AddSingleton<ClienteController>();
+services.AddSingleton<IOrdenServices,ClienteServices>();
+services.AddSingleton<IOrdenQuery, ClienteQuery>();
+services.AddSingleton<IOrdenCommand, ClienteCommand>();
+services.AddSingleton<ServicesCliente>();
 
-services.AddSingleton<ICarritoServices, CarritoServices>();
+services.AddSingleton<ICarritoServices,CarritoServices>();
 services.AddSingleton<ICarritoQuery, CarritoQuery>();
 services.AddSingleton<ICarritoCommand, CarritoCommand>();
-services.AddSingleton<CarritoController>();
-
+services.AddSingleton<ServicesCarrito>();
 services.AddSingleton<Menu>();
+services.AddSingleton<LogicaPantalla>();
+services.AddSingleton<Reportes>();
+
 
 services.AddDbContext<TiendaContext>(options =>
 {
@@ -47,4 +52,4 @@ services.AddDbContext<TiendaContext>(options =>
 var serviceProvider = services.BuildServiceProvider();
 
 var menu = serviceProvider.GetService<Menu>();
-if (menu != null) { await menu.InicializarMenu(); }
+if (menu != null) {await menu.InicializarMenuPrincipal(); }

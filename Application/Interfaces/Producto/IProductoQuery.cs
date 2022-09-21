@@ -10,6 +10,6 @@ namespace Application.Interfaces
     public interface IProductoQuery
     {
         List<Producto> GetProductos();
-        Producto GetProductoById(int productoId);
+        Producto GetById(int productoId);
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Querys
 {
-    public class ClienteQuery : IClienteQuery
+    public class ClienteQuery : IOrdenQuery
     {
         private readonly TiendaContext _context;
 

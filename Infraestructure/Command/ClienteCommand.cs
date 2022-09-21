@@ -5,7 +5,7 @@ using Infraestructure.Data;
 
 namespace Infraestructure.Command
 {
-    public class ClienteCommand: IClienteCommand
+    public class ClienteCommand: IOrdenCommand
     {
         private readonly TiendaContext _context;
 

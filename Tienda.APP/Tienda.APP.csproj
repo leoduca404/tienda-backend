@@ -30,4 +30,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Cliente\" />
+    <Folder Include="Services\Carrito\" />
+    <Folder Include="Services\Producto\" />
+  </ItemGroup>
+
 </Project>

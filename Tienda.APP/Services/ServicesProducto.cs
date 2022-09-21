@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Tienda.APP.Controllers
 {
-    public class ProductoController
+    public class ServicesProducto
     {
         private readonly IProductoServices _services;
 
-        public ProductoController(IProductoServices services)
+        public ServicesProducto(IProductoServices services)
         {
             _services = services;
         }
@@ -24,6 +25,11 @@ namespace Tienda.APP.Controllers
         public async Task RemoveProducto(int productoId)
         {
             await _services.RemoveProducto(productoId);
+        }
+
+        public Producto GetById(int productoId)
+        {
+            return _services.GetById(productoId);
         }
 
     }

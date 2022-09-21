@@ -4,12 +4,12 @@ using Domain.Entities;
 
 namespace Application.UseCase
 {
-    public class ClienteServices : IClienteServices
+    public class ClienteServices : IOrdenServices
     {
-        private readonly IClienteCommand _command;
-        private readonly IClienteQuery _query;
+        private readonly IOrdenCommand _command;
+        private readonly IOrdenQuery _query;
         
-        public ClienteServices(IClienteCommand command, IClienteQuery query)
+        public ClienteServices(IOrdenCommand command, IOrdenQuery query)
         {
             _command = command;
             _query = query;
