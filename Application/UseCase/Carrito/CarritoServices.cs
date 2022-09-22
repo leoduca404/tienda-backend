@@ -17,7 +17,15 @@ namespace Application.UseCase
 
         public async Task Add(Carrito carrito)
         {
+            if (carrito == null)
+                throw new ArgumentNullException("El 'Carrito' es requerido");
+
             await _command.Add(carrito);        
+        }
+
+        public void Update(Carrito carrito)
+        {
+     
         }
 
         public List<Carrito> GetAll()

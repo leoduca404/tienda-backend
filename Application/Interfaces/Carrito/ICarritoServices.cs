@@ -11,5 +11,6 @@ namespace Application.Interfaces
     {
         Task Add(Carrito carrito);
         Carrito GetByClientId(int clientId);
+        void Update(Carrito carrito);
     }
 }

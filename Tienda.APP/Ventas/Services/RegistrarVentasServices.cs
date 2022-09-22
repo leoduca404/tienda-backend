@@ -51,71 +51,39 @@ namespace Tienda.APP.Ventas.Services
             }
 
             //Busco Carrito abierto
-            //var carrito = _carritoServices.GetByClientId(cliente.ClienteId);
-
+            Carrito carrito = _carritoServices.GetByClientId(cliente.ClienteId);
             List<CarritoProducto> productos = this.SeleccionarProductos();
 
             Guid id = Guid.NewGuid();
             var order = new Orden
             {
                 OrdenId = Guid.NewGuid(),
-                CarritoId = id,
+                CarritoId = carrito == null ? id: carrito.CarritoId,
                 Fecha = DateTime.Now,
                 Total = _total
             };
 
-            var newCarrito = new Carrito
+            if (carrito == null)
             {
-                CarritoId = id,
-                Cliente = cliente,
-                ClienteId = cliente.ClienteId,
-                Estado = false,
-                Orden = order,
-                CarritoProductos = productos
-            };
+                carrito = new Carrito
+                {
+                    CarritoId = id,
+                    Cliente = cliente,
+                    Estado = false,
+                    Orden = order,
+                    CarritoProductos = productos
+                };
 
-            await _carritoServices.Add(newCarrito);
+                await _carritoServices.Add(carrito);
+            }
+            else
+            {               
+                carrito.Orden = order;
+                carrito.CarritoProductos = productos;
+                carrito.Estado = false;
 
-
-            //if (carrito != null)
-            //{
-            //    var order = new Orden
-            //    {
-            //        OrdenId = Guid.NewGuid(),
-            //        CarritoId = carrito.CarritoId,
-            //        Fecha = DateTime.Now,
-            //        Total = _total
-            //    };
-
-            //    carrito.Estado = false;
-            //    carrito.CarritoProductos = productos;
-            //    carrito.Orden = order;
-              
-            //    //await _carritoServices.Add(carrito);
-            //}
-            //else
-            //{
-            //    Guid id = Guid.NewGuid();
-            //    var order = new Orden
-            //    {
-            //        OrdenId = Guid.NewGuid(),
-            //        CarritoId = id,
-            //        Fecha = DateTime.Now,
-            //        Total = _total
-            //    };
-
-            //    var newCarrito = new Carrito
-            //    {
-            //        CarritoId = id,
-            //        Cliente = cliente,
-            //        ClienteId = cliente.ClienteId,
-            //        Estado = false,
-            //        Orden = order,
-            //        CarritoProductos = productos
-            //    };
-
-            //    await _carritoServices.Add(newCarrito);
-            //}
+                _carritoServices.Update(carrito);
+            }
 
             //Registro ventas
             Console.Write("\n--------------------------------------------------------------------------------\n\n");

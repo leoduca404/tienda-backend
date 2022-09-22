@@ -16,7 +16,6 @@ using Tienda.APP.Ventas.Services;
 //1. Create a service collection for DI
 ServiceCollection services = new ServiceCollection();
 
-//2. Build a configuration https://www.youtube.com/watch?v=tQdNlju2UXo
 IConfiguration configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)
     .AddJsonFile("appsettings.json")

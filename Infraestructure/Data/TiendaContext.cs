@@ -39,5 +39,6 @@ namespace Infraestructure.Data
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());    
         }
 
+    
     }
 }
