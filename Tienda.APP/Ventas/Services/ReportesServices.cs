@@ -1,24 +1,15 @@
-﻿using Application.Interfaces;
-using Infraestructure.Data;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tienda.APP.Helpers;
+﻿using Application.Interfaces.Ventas;
 using Domain.Entities;
-using Application.Interfaces.Ventas;
+using Tienda.APP.Helpers;
 
 namespace Tienda.APP.Ventas.Services
 {
-    public class Reportes
-    {
-        //private readonly IOrdenServices _servicesOrden;
+    public class ReportesServices
+    {        
         private readonly LogicaPantalla _logicaPantalla;
         private readonly IReporteServices _reportesServices; 
 
-        public Reportes(LogicaPantalla logicaPantalla, IReporteServices reportesServices)
+        public ReportesServices(LogicaPantalla logicaPantalla, IReporteServices reportesServices)
         {
             _reportesServices = reportesServices;
             _logicaPantalla = logicaPantalla;
@@ -30,19 +21,25 @@ namespace Tienda.APP.Ventas.Services
 
             List<Orden> ordenes = await _reportesServices.GetReporteDiario();
             _logicaPantalla.imprimirColumnaHead("Cliente", "Producto", "Marca", "Precio", "Fecha");
+            int cont = 0;
 
             foreach (Orden orden in ordenes)
             {                
                 foreach (CarritoProducto carritoProducto in orden.Carrito.CarritoProductos)
                 {
-                    _logicaPantalla.imprimirColumna(orden.Carrito.Cliente.DNI,
+                    _logicaPantalla.imprimirColumna(
+                        orden.Carrito.Cliente.ClienteId.ToString(),
                         carritoProducto.Producto.Nombre,
                         carritoProducto.Producto.Marca,
                         carritoProducto.Producto.Precio.ToString(),
-                        orden.Fecha.ToString());        
+                        orden.Fecha.ToString());
+                    cont++;
                 }
             }
-            
+
+            if (cont == 0)
+                Console.WriteLine("No hay elementos...");
+
             _logicaPantalla.imprimirSalida();
         }
 
@@ -50,7 +47,7 @@ namespace Tienda.APP.Ventas.Services
         {
             _logicaPantalla.imprimirEncabezado(ConsoleColor.Blue, "Busqueda por producto - Ventas Diarias");
 
-            string producto = _logicaPantalla.obtenerValorSoloLetras("nombre del producto");
+            string producto = _logicaPantalla.obtenerValor("nombre del producto");
             Console.WriteLine();
 
             List <Orden> ordenes = await _reportesServices.GetReporteDiario(producto);

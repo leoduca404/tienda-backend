@@ -11,5 +11,6 @@ namespace Application.Interfaces
     {
         List<Carrito> GetAll();
         Carrito GetById(Guid carritoId);
+        Carrito GetByClientId(int clientId);
     }
 }

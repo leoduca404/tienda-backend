@@ -17,37 +17,17 @@ namespace Application.UseCase
 
         public async Task Add(Carrito carrito)
         {
-            //Guid id = Guid.NewGuid();
-
-            //var order = new Orden
-            //{
-            //    OrdenId = Guid.NewGuid(),
-            //    CarritoId = id,
-            //    Fecha = DateTime.Now,
-            //    Total = 0
-            //};
-
-            //var newCarrito = new Carrito
-            //{
-            //    CarritoId = id,   
-            //    Cliente = cliente,      
-            //    ClienteId= cliente.ClienteId,
-            //    Estado = true, 
-            //    Orden = order,
-            //};                      
-
-            await _command.Add(carrito);
-        
+            await _command.Add(carrito);        
         }
 
         public List<Carrito> GetAll()
         {
             throw new NotImplementedException();
-        }
+        }  
 
-        public Carrito GetById(Guid clientId)
+        public Carrito GetByClientId(int clientId)
         {
-           return _query.GetById(clientId);            
+            return _query.GetByClientId(clientId);
         }
     }
 }

@@ -28,9 +28,9 @@ namespace Infraestructure.Querys
             throw new NotImplementedException();
         }
 
-        public Carrito GetById(int carritoId)
+        public Carrito GetByClientId(int clientId)
         {
-            throw new NotImplementedException();
+            return _context.Carritos.FirstOrDefault(s => (s.ClienteId == clientId && s.Estado == true));
         }
     }
 }

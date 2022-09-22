@@ -120,14 +120,14 @@ namespace Infraestructure.Migrations
                 {
                     { 1, "cod001", "Yerba sin palos", "", "Amanda", "Yerba Mate", 150m },
                     { 2, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
-                    { 3, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
-                    { 4, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
-                    { 5, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
-                    { 6, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
-                    { 7, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
-                    { 8, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
-                    { 9, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m },
-                    { 10, "cod002", "Cafe en granos", "", "La virginia", "Cafe Molido", 100m }
+                    { 3, "cod003", "Sopa instantanea", "", "Knor", "Sopa", 70m },
+                    { 4, "cod004", "Saquitos", "", "La virginia", "Cafe en sacos", 100m },
+                    { 5, "cod005", "Te en hebras", "", "La virginia", "Te", 50m },
+                    { 6, "cod006", "En granos", "", "Dos Anclas", "Pimienta Negra", 100m },
+                    { 7, "cod007", "En granos", "", "Dos Anclas", "Pimienta Blanca", 90m },
+                    { 8, "cod008", "En granos", "", "Dos Anclas", "Pimienta Verde", 110m },
+                    { 9, "cod009", "En granos", "", "Dos Anclas", "Pimienta Cayena", 850m },
+                    { 10, "cod010", "En polvo", "", "Dos Anclas", "Pimienta Roja", 115m }
                 });
 
             migrationBuilder.CreateIndex(

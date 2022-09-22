@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    public interface IOrden
+    public interface ICliente
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }

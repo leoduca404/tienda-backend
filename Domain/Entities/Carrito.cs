@@ -13,7 +13,7 @@ namespace Domain.Entities
         public int ClienteId { get; set; }
         public virtual Cliente Cliente { get; set; }
         public bool Estado { get; set; }
-        public virtual Orden Orden { get; set; }
-        public ICollection<CarritoProducto> CarritoProductos { get; set; }
+        public virtual Orden? Orden { get; set; }
+        public ICollection<CarritoProducto>? CarritoProductos { get; set; }
     }
 }

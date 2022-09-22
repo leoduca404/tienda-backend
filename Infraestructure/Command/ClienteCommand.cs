@@ -2,10 +2,9 @@
 using Domain.Entities;
 using Infraestructure.Data;
 
-
 namespace Infraestructure.Command
 {
-    public class ClienteCommand: IOrdenCommand
+    public class ClienteCommand: IClienteCommand
     {
         private readonly TiendaContext _context;
 
@@ -18,7 +17,7 @@ namespace Infraestructure.Command
         {
            _context.Add(cliente);
            await _context.SaveChangesAsync();
-        }          
+        }
 
         public async Task RemoveCliente(int clienteId)
         {

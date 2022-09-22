@@ -30,7 +30,7 @@ namespace Infraestructure.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=TiendaLeo;Integrated Security=SSPI;");
+            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=LeonardoDuca;Integrated Security=SSPI;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

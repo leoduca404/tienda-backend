@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    public interface IOrdenCommand
+    public interface IClienteCommand
     {
         Task AddCliente(Cliente cliente);
 

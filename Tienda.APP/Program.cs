@@ -1,18 +1,17 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Infraestructure.Data;
-using Microsoft.EntityFrameworkCore;
-using Application.Interfaces;
+﻿using Application.Interfaces;
+using Application.Interfaces.Ventas;
 using Application.UseCase;
-using Infraestructure.Querys;
+using Application.UseCase.Ventas;
 using Infraestructure.Command;
-using Tienda.APP.Controllers;
+using Infraestructure.Data;
+using Infraestructure.Querys;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Tienda.APP;
-using Tienda.APP.Services;
+using Tienda.APP.Clientes.Services;
 using Tienda.APP.Helpers;
 using Tienda.APP.Ventas.Services;
-using Application.Interfaces.Ventas;
-using Application.UseCase.Ventas;
 
 //1. Create a service collection for DI
 ServiceCollection services = new ServiceCollection();
@@ -29,12 +28,11 @@ services.AddSingleton<IConfiguration>(configuration);
 services.AddSingleton<IProductoServices,ProductoServices>();
 services.AddSingleton<IProductoQuery, ProductoQuery>();
 services.AddSingleton<IProductoCommand, ProductoCommand>();
-services.AddSingleton<ServicesProducto>();
 
-services.AddSingleton<IOrdenServices,ClienteServices>();
-services.AddSingleton<IOrdenQuery, ClienteQuery>();
-services.AddSingleton<IOrdenCommand, ClienteCommand>();
-services.AddSingleton<ServicesCliente>();
+services.AddSingleton<IClienteServices,ClienteServices>();
+services.AddSingleton<IClienteQuery, ClienteQuery>();
+services.AddSingleton<IClienteCommand, ClienteCommand>();
+services.AddSingleton<RegistrarClienteServices>();
 
 services.AddSingleton<IReporteServices, ReporteServices>();
 services.AddSingleton<IVentasQuery, VentasQuery>();
@@ -42,13 +40,11 @@ services.AddSingleton<IVentasQuery, VentasQuery>();
 services.AddSingleton<ICarritoServices,CarritoServices>();
 services.AddSingleton<ICarritoQuery, CarritoQuery>();
 services.AddSingleton<ICarritoCommand, CarritoCommand>();
+services.AddSingleton<RegistrarVentasServices>();
 
-services.AddSingleton<ServicesCarrito>();
 services.AddSingleton<Menu>();
 services.AddSingleton<LogicaPantalla>();
-services.AddSingleton<Reportes>();
-
-
+services.AddSingleton<ReportesServices>();
 
 
 services.AddDbContext<TiendaContext>(options =>

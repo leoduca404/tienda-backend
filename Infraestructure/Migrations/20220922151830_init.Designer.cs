@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(TiendaContext))]
-    [Migration("20220919002821_init")]
+    [Migration("20220922151830_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -189,82 +189,82 @@ namespace Infraestructure.Migrations
                         new
                         {
                             ProductoId = 3,
-                            Codigo = "cod002",
-                            Descripcion = "Cafe en granos",
+                            Codigo = "cod003",
+                            Descripcion = "Sopa instantanea",
                             Image = "",
-                            Marca = "La virginia",
-                            Nombre = "Cafe Molido",
-                            Precio = 100m
+                            Marca = "Knor",
+                            Nombre = "Sopa",
+                            Precio = 70m
                         },
                         new
                         {
                             ProductoId = 4,
-                            Codigo = "cod002",
-                            Descripcion = "Cafe en granos",
+                            Codigo = "cod004",
+                            Descripcion = "Saquitos",
                             Image = "",
                             Marca = "La virginia",
-                            Nombre = "Cafe Molido",
+                            Nombre = "Cafe en sacos",
                             Precio = 100m
                         },
                         new
                         {
                             ProductoId = 5,
-                            Codigo = "cod002",
-                            Descripcion = "Cafe en granos",
+                            Codigo = "cod005",
+                            Descripcion = "Te en hebras",
                             Image = "",
                             Marca = "La virginia",
-                            Nombre = "Cafe Molido",
-                            Precio = 100m
+                            Nombre = "Te",
+                            Precio = 50m
                         },
                         new
                         {
                             ProductoId = 6,
-                            Codigo = "cod002",
-                            Descripcion = "Cafe en granos",
+                            Codigo = "cod006",
+                            Descripcion = "En granos",
                             Image = "",
-                            Marca = "La virginia",
-                            Nombre = "Cafe Molido",
+                            Marca = "Dos Anclas",
+                            Nombre = "Pimienta Negra",
                             Precio = 100m
                         },
                         new
                         {
                             ProductoId = 7,
-                            Codigo = "cod002",
-                            Descripcion = "Cafe en granos",
+                            Codigo = "cod007",
+                            Descripcion = "En granos",
                             Image = "",
-                            Marca = "La virginia",
-                            Nombre = "Cafe Molido",
-                            Precio = 100m
+                            Marca = "Dos Anclas",
+                            Nombre = "Pimienta Blanca",
+                            Precio = 90m
                         },
                         new
                         {
                             ProductoId = 8,
-                            Codigo = "cod002",
-                            Descripcion = "Cafe en granos",
+                            Codigo = "cod008",
+                            Descripcion = "En granos",
                             Image = "",
-                            Marca = "La virginia",
-                            Nombre = "Cafe Molido",
-                            Precio = 100m
+                            Marca = "Dos Anclas",
+                            Nombre = "Pimienta Verde",
+                            Precio = 110m
                         },
                         new
                         {
                             ProductoId = 9,
-                            Codigo = "cod002",
-                            Descripcion = "Cafe en granos",
+                            Codigo = "cod009",
+                            Descripcion = "En granos",
                             Image = "",
-                            Marca = "La virginia",
-                            Nombre = "Cafe Molido",
-                            Precio = 100m
+                            Marca = "Dos Anclas",
+                            Nombre = "Pimienta Cayena",
+                            Precio = 850m
                         },
                         new
                         {
                             ProductoId = 10,
-                            Codigo = "cod002",
-                            Descripcion = "Cafe en granos",
+                            Codigo = "cod010",
+                            Descripcion = "En polvo",
                             Image = "",
-                            Marca = "La virginia",
-                            Nombre = "Cafe Molido",
-                            Precio = 100m
+                            Marca = "Dos Anclas",
+                            Nombre = "Pimienta Roja",
+                            Precio = 115m
                         });
                 });
 

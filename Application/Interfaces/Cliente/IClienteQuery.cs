@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    public interface IOrdenQuery
+    public interface IClienteQuery
     {
         List<Cliente> GetClientes();
         Cliente GetById(int clienteID);
